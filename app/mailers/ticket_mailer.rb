@@ -1,5 +1,5 @@
 class TicketMailer < ActionMailer::Base
-  default from: "no-reply@helpdesk.com"
+  default from: "08209ff91754d040facc@cloudmailin.net"
 
   def new_ticket_confirmation(ticket)
     @ticket = ticket
