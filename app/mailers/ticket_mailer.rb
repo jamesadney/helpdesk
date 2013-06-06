@@ -4,6 +4,8 @@ class TicketMailer < ActionMailer::Base
   def new_ticket_confirmation(ticket)
     @ticket = ticket
 
-    mail to: ENV["HELPDESK_EMAIL"], subject: "New Ticket: #{ticket.title}"
+    # not a secure way of doing this
+    headers["ticket_id"] = @ticket.id
+    mail to: ENV["HELPDESK_EMAIL"], subject: "New Ticket: #{@ticket.title} ID: #{@ticket.id}"
   end
 end
