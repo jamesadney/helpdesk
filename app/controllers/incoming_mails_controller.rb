@@ -5,6 +5,10 @@ class IncomingMailsController < ApplicationController
     subject = params[:headers][:Subject]
     id      = subject.match(/\d+$/).to_s
     reply   = params[:plain]
+
+    ticket = Ticket.find(id)
+    ticket.reply = reply
+    ticket.save
     render :text => 'success', :status => 200 # a status of 404 would reject the mail
   end
 end
